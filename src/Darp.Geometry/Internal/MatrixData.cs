@@ -111,7 +111,7 @@ internal readonly struct MatrixData
         return lease;
     }
 
-    internal TensorSpanLease AcquireWritableTensorSpan(out TensorSpan<double> span)
+    internal TensorSpanLease GetTensorSpan(out TensorSpan<double> span)
     {
         Storage.RequireWritable();
         var lease = new TensorSpanLease(Storage);

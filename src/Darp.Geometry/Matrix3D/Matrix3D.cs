@@ -44,8 +44,7 @@ public readonly partial struct Matrix3D : IMatrixD<Matrix3D>
 
     static Matrix3D IReadOnlyMatrixD<Matrix3D>.Create(in MatrixData data) => new(data);
 
-    TensorSpanLease IMatrixD<Matrix3D>.GetTensorSpan(out TensorSpan<double> span) =>
-        Data.AcquireWritableTensorSpan(out span);
+    TensorSpanLease IMatrixD<Matrix3D>.GetTensorSpan(out TensorSpan<double> span) => Data.GetTensorSpan(out span);
 
     TensorSpanLease IReadOnlyMatrixD<Matrix3D>.GetReadOnlyTensorSpan(out ReadOnlyTensorSpan<double> span) =>
         Data.AcquireReadOnlyTensorSpan(out span);

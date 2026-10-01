@@ -23,8 +23,7 @@ public readonly partial struct Isometry3D : IMatrixD<Isometry3D>
 
     static Isometry3D IReadOnlyMatrixD<Isometry3D>.Create(in MatrixData data) => new(data);
 
-    TensorSpanLease IMatrixD<Isometry3D>.GetTensorSpan(out TensorSpan<double> span) =>
-        Data.AcquireWritableTensorSpan(out span);
+    TensorSpanLease IMatrixD<Isometry3D>.GetTensorSpan(out TensorSpan<double> span) => Data.GetTensorSpan(out span);
 
     public double this[int row, int column]
     {

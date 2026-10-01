@@ -21,8 +21,7 @@ public readonly partial struct QuaternionD : IMatrixD<QuaternionD>
 
     static QuaternionD IReadOnlyMatrixD<QuaternionD>.Create(in MatrixData data) => new(data);
 
-    TensorSpanLease IMatrixD<QuaternionD>.GetTensorSpan(out TensorSpan<double> span) =>
-        Data.AcquireWritableTensorSpan(out span);
+    TensorSpanLease IMatrixD<QuaternionD>.GetTensorSpan(out TensorSpan<double> span) => Data.GetTensorSpan(out span);
 
     public double this[int row, int column]
     {

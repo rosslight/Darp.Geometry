@@ -134,7 +134,7 @@ public sealed class GeometryOwnershipTests
         var matrix = GeometryExtensions.ToRotationMatrix(rotation);
         GeometryExtensions.Determinant(matrix).ShouldBe(1, 1e-12);
         var transposed = matrix.Transposed();
-        var product = Matrix.Multiply(matrix, transposed);
+        var product = matrix * transposed;
         for (int row = 0; row < 3; row++)
         for (int column = 0; column < 3; column++)
             product[row, column].ShouldBe(row == column ? 1 : 0, 1e-12);

@@ -2,9 +2,19 @@ namespace Darp.Geometry;
 
 public readonly partial struct Matrix3D
 {
-    public static Matrix3D operator +(Matrix3D a, ReadOnlyMatrix3D b) => Matrix.Add(a, b);
+    public static Matrix3D operator +(Matrix3D a, ReadOnlyMatrix3D b)
+    {
+        Matrix3D result = new(new MatrixData(a.Rows, a.Columns));
+        Matrix.Add(in a, in b, in result);
+        return result;
+    }
 
-    public static Matrix3D operator -(Matrix3D a, ReadOnlyMatrix3D b) => Matrix.Subtract(a, b);
+    public static Matrix3D operator -(Matrix3D a, ReadOnlyMatrix3D b)
+    {
+        Matrix3D result = new(new MatrixData(a.Rows, a.Columns));
+        Matrix.Subtract(in a, in b, in result);
+        return result;
+    }
 
     public static Matrix3D operator *(Matrix3D a, ReadOnlyMatrix3D b) => Matrix.Multiply(a, b);
 

@@ -32,8 +32,7 @@ public readonly partial struct Vector3D : IMatrixD<Vector3D>
 
     static Vector3D IReadOnlyMatrixD<Vector3D>.Create(in MatrixData data) => new(data);
 
-    TensorSpanLease IMatrixD<Vector3D>.GetTensorSpan(out TensorSpan<double> span) =>
-        Data.AcquireWritableTensorSpan(out span);
+    TensorSpanLease IMatrixD<Vector3D>.GetTensorSpan(out TensorSpan<double> span) => Data.GetTensorSpan(out span);
 
     public double this[int row, int column]
     {

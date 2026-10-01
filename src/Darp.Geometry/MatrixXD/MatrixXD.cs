@@ -48,8 +48,7 @@ public readonly partial struct MatrixXD : IMatrixD<MatrixXD>
     TensorSpanLease IReadOnlyMatrixD<MatrixXD>.GetReadOnlyTensorSpan(out ReadOnlyTensorSpan<double> span) =>
         Data.AcquireReadOnlyTensorSpan(out span);
 
-    TensorSpanLease IMatrixD<MatrixXD>.GetTensorSpan(out TensorSpan<double> span) =>
-        Data.AcquireWritableTensorSpan(out span);
+    TensorSpanLease IMatrixD<MatrixXD>.GetTensorSpan(out TensorSpan<double> span) => Data.GetTensorSpan(out span);
 
     /// <summary>Maps caller-owned memory without copying it.</summary>
     /// <remarks>
